@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:title/model/model.dart';
 
 class Details extends StatelessWidget {
-  const Details({super.key});
+  const Details({super.key,required this.title,required this.description,required this.date,required this.index}
+  );
+  final String title;
+  final String description;
+  final  date;
+  final index;
 
   @override
   Widget build(BuildContext context) {
@@ -16,15 +22,20 @@ class Details extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
-            Text(
-              "date",
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+            Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Text(
+                  noteModel[index].title,
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                ),
+                Text(noteModel[index].date)
+              ],
             ),
             SizedBox(
               height: 20,
             ),
             Text(
-              "Using Lorem ipsum to focus attention on graphic elements in a webpage design proposal · One of the earliest examples of the Lorem ipsum placeholder text on 1960s advertising. In publishing and graphic, Using Lorem ipsum to focus attention on graphic elements in a webpage design proposal · One of the earliest examples of the Lorem ipsum placeholder text on 1960s advertising. In publishing and graphic",
+              noteModel[index].description,
               style: TextStyle(
                 fontSize: 15,
               ),

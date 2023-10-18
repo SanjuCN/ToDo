@@ -4,7 +4,12 @@ import 'package:title/model/model.dart';
 import 'package:title/view/detailsscreen.dart';
 
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+  const HomeScreen({super.key,required this.title,required this.description,required this.date,required this.index
+  });
+   final String title;
+  final String description;
+  final  date;
+  final index;
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
@@ -194,7 +199,10 @@ class _HomeScreenState extends State<HomeScreen> {
               return GestureDetector(
                 onTap: () {
                   Navigator.of(context)
-                      .push(MaterialPageRoute(builder: (context) => Details()));
+                      .push(MaterialPageRoute(builder: (context) => Details(index: index,
+                      title: widget.title?? "",
+                      description: widget.description??"",
+                      date: widget.date??"",)));
                 },
                 child: Container(
                   padding: EdgeInsets.all(10),
